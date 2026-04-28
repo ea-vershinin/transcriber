@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Env
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Данные
+storage/uploads/*
+storage/outputs/*
+storage/audio_cache/*
+!storage/uploads/.gitkeep
+!storage/outputs/.gitkeep
+!storage/audio_cache/.gitkeep
+
+# Кэш Whisper/HuggingFace
+.cache/
+models/
+
+# Node (понадобится во фронтенде)
+node_modules/
+dist/
+build/
+
+# Логи и временное
+*.log
+*.tmp
+
+# Системный мусор
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Vite
+.vite/
+*.local
+
+# Тесты и покрытие
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm

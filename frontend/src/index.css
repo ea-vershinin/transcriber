@@ -1,0 +1,872 @@
+/* ===== Базовое ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #1a1a1a;
+  --bg-surface: #242424;
+  --bg-surface-hover: #2d2d2d;
+  --border: #333;
+  --text: rgba(255, 255, 255, 0.87);
+  --text-muted: #888;
+  --primary: #646cff;
+  --primary-hover: #535bf2;
+  --success: #4caf50;
+  --warning: #ff9800;
+  --error: #ff6b6b;
+
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f9f9f9;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f0f0f0;
+    --border: #e0e0e0;
+    --text: #213547;
+    --text-muted: #666;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+/* ===== Layout ===== */
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.app-header {
+  margin-bottom: 2.5rem;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.error {
+  color: var(--error);
+}
+
+/* ===== Tabs ===== */
+
+.tabs-nav {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  padding: 0.6rem 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.95rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab-active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* ===== Forms ===== */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-row > span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.form-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-checkbox > span {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="file"] {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+input[type="file"] {
+  padding: 0.4rem;
+}
+
+input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.format-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.format-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ===== Buttons ===== */
+
+.btn-primary {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 500;
+  align-self: flex-start;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Messages ===== */
+
+.message {
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.message-success {
+  background: rgba(76, 175, 80, 0.15);
+  border-left: 3px solid var(--success);
+}
+
+.message-error {
+  background: rgba(255, 107, 107, 0.15);
+  border-left: 3px solid var(--error);
+}
+
+/* ===== Tasks list ===== */
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.task-row {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  transition: background 0.15s;
+}
+
+.task-row:hover {
+  background: var(--bg-surface-hover);
+}
+
+.task-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.3rem;
+}
+
+.task-source {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.task-meta {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+
+.task-error {
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  font-family: ui-monospace, monospace;
+}
+
+.task-exports {
+  color: var(--success);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+/* ===== Badges (статусы) ===== */
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-pending {
+  background: rgba(136, 136, 136, 0.2);
+  color: var(--text-muted);
+}
+
+.badge-processing {
+  background: rgba(255, 152, 0, 0.2);
+  color: var(--warning);
+}
+
+.badge-completed {
+  background: rgba(76, 175, 80, 0.2);
+  color: var(--success);
+}
+
+.badge-failed {
+  background: rgba(255, 107, 107, 0.2);
+  color: var(--error);
+}
+
+/* ===== Стили Спринта 5C — добавить в конец index.css ===== */
+
+/* Главный заголовок как ссылка без подчёркивания */
+.app-title {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-title:hover {
+  color: var(--primary);
+}
+
+/* Ссылка "← К списку задач" */
+.back-link {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Обёртка-ссылка над строкой задачи */
+.task-row-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.task-row-link:hover .task-row {
+  border-color: var(--primary);
+}
+
+/* Заголовок страницы задачи */
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.task-header h2 {
+  margin: 0;
+  word-break: break-all;
+  flex: 1;
+  min-width: 0;
+  font-size: 1.15rem;
+  border: none;
+  padding: 0;
+}
+
+/* Блок метаданных */
+.task-meta-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.4rem 1.5rem;
+}
+
+.meta-row {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  min-width: 0;
+}
+
+.meta-label {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.meta-value {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta-value-mono {
+  font-family: ui-monospace, "Consolas", monospace;
+  font-size: 0.85rem;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.task-error-text {
+  margin-top: 0.4rem;
+  font-family: ui-monospace, "Consolas", monospace;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+
+/* Кнопки скачивания */
+.export-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.export-buttons strong {
+  margin-right: 0.5rem;
+}
+
+.btn-export {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.btn-export:hover {
+  border-color: var(--primary);
+  background: var(--bg-surface-hover);
+}
+
+/* Список сегментов */
+.segments {
+  margin-top: 1.5rem;
+}
+
+.segments h3 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.segments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.segment {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.85rem;
+}
+
+.segment-header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.segment-time {
+  color: var(--text-muted);
+  font-family: ui-monospace, "Consolas", monospace;
+}
+
+.segment-speaker {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.segment-text {
+  line-height: 1.55;
+}
+
+/* ===== Стили Спринта 5D ===== */
+
+/* --- Drop zone --- */
+.drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.drop-zone-over {
+  border-color: var(--primary);
+  background: rgba(100, 108, 255, 0.05);
+}
+
+.drop-zone-main {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.drop-zone-filename {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  word-break: break-all;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: border-color 0.15s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  padding: 0;
+}
+
+.btn-text:hover {
+  text-decoration: underline;
+}
+
+/* --- Tasks toolbar (фильтры + поиск) --- */
+.tasks-toolbar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.status-filters {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.filter-chip {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.filter-chip:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.filter-chip-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 180px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.count-badge {
+  font-size: 0.8rem;
+}
+
+/* --- Task row с кнопкой удаления --- */
+.task-row-wrapper {
+  position: relative;
+}
+
+.btn-icon-delete {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  opacity: 0;
+}
+
+.task-row-wrapper:hover .btn-icon-delete {
+  opacity: 1;
+}
+
+.btn-icon-delete:hover {
+  background: rgba(255, 107, 107, 0.15);
+  color: var(--error);
+}
+
+/* --- Audio player --- */
+.audio-player {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.audio-player audio {
+  width: 100%;
+}
+
+/* --- Segment (активный при воспроизведении) --- */
+.segment {
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.segment:hover {
+  background: var(--bg-surface-hover);
+}
+
+.segment-active {
+  border-color: var(--primary);
+  background: rgba(100, 108, 255, 0.08);
+}
+
+/* ===== Стили FolderPicker ===== */
+
+/* Поле пути с кнопкой "Обзор" */
+.path-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.path-input-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.btn-sm {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-icon:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text);
+}
+
+/* Модалка — фон + центральная коробка */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Панель навигации в picker */
+.folder-picker-path {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.folder-picker-path-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-family: ui-monospace, "Consolas", monospace;
+}
+
+.folder-picker-path-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Список содержимого */
+.folder-picker-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.folder-picker-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+
+.folder-picker-entry-dir {
+  cursor: pointer;
+}
+
+.folder-picker-entry-dir:hover {
+  background: var(--bg-surface-hover);
+}
+
+.folder-picker-entry-file {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.folder-picker-icon {
+  font-size: 1rem;
+  width: 1.2rem;
+  flex-shrink: 0;
+}
+
+.folder-picker-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Select-стиль под нашу палитру */
+.select-input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  width: fit-content;
+  min-width: 240px;
+}
+
+.select-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.select-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Стили Спринта 6 */
+.search-group {
+  display: flex;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.search-mode {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.5rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.search-mode:focus {
+  outline: none;
+  border-color: var(--primary);
+}

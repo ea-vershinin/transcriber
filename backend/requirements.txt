@@ -1,0 +1,22 @@
+# --- Web framework ---
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+python-multipart==0.0.12
+
+# --- Config / schemas ---
+pydantic==2.9.2
+pydantic-settings==2.6.0
+python-dotenv==1.0.1
+
+# --- Transcription ---
+# WhisperX из main-ветки — содержит свежие версии всех ML-зависимостей.
+# Сам подтянет совместимые faster-whisper, ctranslate2, pyannote, numpy, etc.
+whisperx @ git+https://github.com/m-bain/whisperX.git
+
+# --- YouTube / audio sources ---
+yt-dlp==2024.10.7
+
+# --- Utilities ---
+httpx==0.27.2
+
+python-docx==1.1.2
